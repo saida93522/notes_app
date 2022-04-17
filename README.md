@@ -10,10 +10,6 @@ An application that allows users to browse shows sorted by artist or venue.
 
 Users add notes to shows they have seen, check out shows they haven't seen, and read notes by others.
 
-## Live Site
-
-https://lmn-ejjns.uc.r.appspot.com/
-
 ## Installation
 
 To Install project packages
