@@ -1,0 +1,42 @@
+{% extends 'lmn/base.html' %} {% block content %}
+<section class="pt-5">
+  <div class="container p-3">
+    <h2 id="venues-for-artist-title" class="venue-title">Venue Details</h2>
+
+    <div class="row d-flex justify-content-start">
+      <!--note detail  -->
+      <div class="col-md-8 input-box-venue col-card">
+        <!-- Main content -->
+        <div class="pt-2">
+          <h3 id="venue-name">{{ venue.name }}</h3>
+          {% if venue.city != 'Unknown' %}
+          <div class="venue d-grid gap-1" id="venue-{{ venue.pk }}">
+            <p>
+              <span id="venue-city">{{ venue.city }}</span>,
+              <span id="venue-state">{{ venue.state }}</span>
+            </p>
+          </div>
+
+          {% else %}
+          <p>
+            <span id="venue-state">{{ venue.state }}</span>
+          </p>
+          {% endif %}
+          <div class="venue d-grid gap-1" id="venue-{{ venue.pk }}">
+            <p>
+              <a href="{% url 'artists_at_venue' venue_pk=venue.pk %}">
+                Browse shows at {{ venue.name }}
+              </a>
+            </p>
+            <p class="venue d-grid">
+              <a href="{% url 'venue_list' %}">All Venues</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end-row-->
+  </div>
+</section>
+
+{% endblock %}

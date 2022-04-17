@@ -1,0 +1,38 @@
+{% extends 'lmn/base.html' %}
+
+{% block content %}
+<section >
+  <div class="container log-back">
+    <div class="message">
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="box">
+      <h2>Login</h2>
+      <div class="box-input">
+        <form method="POST" action="">
+          <table id="login-form">
+            {% csrf_token %}
+            {{ form.as_table }}
+          </table>
+          <button type="submit">Login</button>
+            </form>
+
+          <p><a href="{% url 'register' %}">Or create an account</a></p>
+              </div>
+       </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'lmn/base.html' %} {% block content %} {% load static %}
+
+<!-- ======= Hero Section1 ======= -->
+
+<section class="hero py-5 d-flex align-items-center" id="header">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-6 d-flex flex-column justify-content-center fade-in-fwd"
+      >
+       {% if request.user.is_authenticated %}
+        <h3>Welcome back,
+           <span class="intro-diff text-lowercase">{{ user.username }}! </span>
+          </h3>
+           <br>
+           <p>Use the links above to find shows, or check out the latest notes.</p>
+        {% else %}
+        <h2 class="">
+          WELCOME to <span class="intro-diff">Live</span> MUSIC NOTES.
+          <br class="d-block d-sm-block" />
+        </h2>
+        <p class="pt-2">Where you can browse shows sorted by artist or venue.</p>
+         <p>Add your own notes to shows you've seen, check out shows you haven't seen, and read notes by others.</p>
+
+        <p class="mb-4 py-3 justify-content-between">
+          Our new feature now allows you to add 
+          <span class="intro-diff">pictures</span> to your notes.
+        </p>
+         <p>
+           <a href="{% url 'register' %}">
+           </a>
+          </p>
+        {% endif %}
+      </div>
+      <!-- button -->
+      <div class="slide-in-left mt-3" data-aos-delay="600">
+        <div class="text-center text-sm-start">
+        {% if request.user.is_authenticated %}
+          <a
+            href="{% url 'latest_notes' %}"
+            class="btn btn-grad btn-link scrollto d-inline-flex align-items-center justify-content-center align-self-center"
+          >
+           <span class="px-1">Latest Notes</span>
+          {% else %}
+          
+           <a
+            href="{% url 'register' %}"
+            class="btn btn-grad btn-link scrollto d-inline-flex align-items-center justify-content-center align-self-center"
+          >
+             <span class="px-1">Get Started</span>
+          {% endif %}
+                      
+            <i class="bi bi-arrow-right ml-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-arrow-right-circle ml-1"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 16 16 12 12 8"></polyline>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+            </i>
+          </a>
+        </div>
+      </div>
+      <!-- testimonials -->
+      <div class=" m-auto testimonials testimonial-slider ">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators pt-4">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="text-wrap carousel-inner mb-4 pt-5 text-center py-5">
+            <div class="carousel-item  active">
+                <i class="bi bi-chat-right-quote fs-6 text-danger"></i>                    
+                <figure class="text-cent col-md-6 offset-md-3 mt-4">
+                    <blockquote class="blockquote">
+                      
+                      <p class="text-center fs-6">"Live music notes helped me quit smoking."</p>
+    
+                    </blockquote>
+                    <figcaption class="blockquote-footer mt-2 ">Chandler Bing</figcaption>
+                </figure>
+            </div>
+            <div class="carousel-item">
+                <i class="bi bi-chat-right-quote fs-6 text-danger"></i>
+                <figure class="col-md-6 offset-md-3 mt-4">
+                    <blockquote class="blockquote">
+                        <p class="fs-6">"Winter is coming, get live music notes now!"</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer mt-2">Jon Snow</figcaption>
+                </figure>
+            </div>
+            <div class="carousel-item">
+                <i class="bi bi-chat-right-quote fs-6 text-danger"></i>
+                <figure class="col-md-6 offset-md-3 mt-4">
+                    <blockquote class="blockquote">
+                        <p class="fs-6">"Live Music Notes Makes Everything Better."</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer mt-2">Amy Swihrs</figcaption>
+                </figure>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

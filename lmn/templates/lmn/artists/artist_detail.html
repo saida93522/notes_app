@@ -1,0 +1,28 @@
+{% extends 'lmn/base.html' %} {% block content %}
+<section class="pt-5">
+  <div class="container p-3">
+    <h2 id="venues-for-artist-title" class="venue-title">Artist Details</h2>
+
+    <div class="row d-flex justify-content-start">
+      <!--note detail  -->
+      <div class="col-md-8 input-box-venue col-card">
+        <!-- Main content -->
+        <div class="pt-2 input-box-venue">
+          <h3 id="artist-name" class="fw-medium">{{ artist.name }}</h3>
+          <p class="venue">
+            <a href="{% url 'venues_for_artist' artist_pk=artist.pk %}"
+              >Browse shows played by {{ artist.name }}
+            </a>
+          </p>
+
+          <p class="venue d-grid">
+            <a href="{% url 'artist_list' %}">All Artists</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--end-row-->
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+[
+    {
+      "model":"lmn.artist",
+      "pk":1,
+      "fields":{
+        "name":"REM"
+      }
+    },
+    {
+      "model":"lmn.artist",
+      "pk":2,
+      "fields":{
+        "name":"ACDC"
+      }
+    },
+    {
+      "model":"lmn.artist",
+      "pk":3,
+      "fields":{
+        "name":"Yes"
+      }
+    },
+    {
+        "model":"lmn.artist",
+        "pk":4,
+        "fields":{
+          "name":"snoop dog"
+        }
+    },
+    {
+        "model":"lmn.artist",
+        "pk":5,
+        "fields":{
+          "name":"ramones"
+    }
+    },
+    {
+        "model":"lmn.artist",
+        "pk":6,
+        "fields":{
+          "name":"the clash"
+    }
+    },
+    {
+        "model":"lmn.artist",
+        "pk":7,
+        "fields":{
+          "name":"ice cube"
+    }
+    },
+    {
+        "model":"lmn.artist",
+        "pk":8,
+        "fields":{
+          "name":"the wierdos"
+    }
+    },
+    {
+        "model":"lmn.artist",
+        "pk":9,
+        "fields":{
+        "name":"the buzzcocks"
+    }
+    },
+
+    {
+        "model":"lmn.artist",
+        "pk":10,
+        "fields":{
+            "name":"the damned"
+    }
+    },
+    {
+        "model":"lmn.artist",
+        "pk":11,
+        "fields":{
+            "name":"the meteors"
+    }
+    },
+    {
+        "model":"lmn.artist",
+        "pk":12,
+        "fields":{
+            "name":"stray cats"
+    }
+  }
+]

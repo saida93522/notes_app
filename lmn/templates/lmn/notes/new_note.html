@@ -1,0 +1,33 @@
+{% extends 'lmn/base.html' %} {% block content %}
+<section>
+  <div class="container">
+    <h2>
+      New note for
+      <a href="{% url 'notes_for_show' show_pk=show.pk %}"
+        >{{ show.artist.name }} at {{ show.venue.name }}</a
+      >
+      on {{ show.show_date }}
+    </h2>
+
+    <form
+      class="col-md-6"
+      method="POST"
+      action="{% url 'new_note' show_pk=show.pk %}"
+      enctype="multipart/form-data"
+    >
+      <div>
+        {% csrf_token %}
+        <div>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </div>
+        {{ form.as_p }}
+      </div>
+      <input type="submit" value="Add Note" />
+    </form>
+  </div>
+</section>
+
+<p><a href="{% url 'notes_for_show' show_pk=show.pk %}">Back to Show</a></p>
+{% endblock %}

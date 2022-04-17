@@ -1,0 +1,149 @@
+{% load static %}
+<nav class="navbar navbar-expand-md py-4">
+  <div class="container">
+    <a
+      class="navbar-brand d-flex align-items-center justify-content-between"
+      href="{% url 'homepage' %}"
+    >
+      <!-- logo -->
+      <svg
+        width="78"
+        height="28"
+        viewBox="0 0 78 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2.772 0.907999V26H14.832V23.336H6.048V0.907999H2.772Z"
+          fill="#FFFBFB"
+        />
+        <path
+          d="M74.224 0.872V20.816L61.048 0.872H57.772V26H61.048V6.02L74.224 26H77.5V0.872H74.224Z"
+          fill="#FFFBFB"
+        />
+        <path
+          d="M22 4.08333L22 24.9167L24.25 27M22 4.08333L24.25 2L33.25 10.3333M22 4.08333L31 12.4167M24.25 27L24.25 10.3333L28.75 14.5L26.5 16.5833L35.5 8.25L44.5 16.5833L42.25 14.5L46.75 10.3333V27M24.25 27L35.5 16.5833L46.75 27M26.5 12.4167L26.5 20.75L35.5 12.4167L44.5 20.75V12.4167M49 4.08333L49 24.9167L46.75 27M49 4.08333L46.75 2L37.75 10.3333M49 4.08333L40 12.4167"
+          stroke="#BA5E9B"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-align-right"
+        >
+          <line x1="21" y1="10" x2="7" y2="10"></line>
+          <line x1="21" y1="6" x2="3" y2="6"></line>
+          <line x1="21" y1="14" x2="3" y2="14"></line>
+          <line x1="21" y1="18" x2="7" y2="18"></line>
+        </svg>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- venues,artist,notes navbar -->
+      <ul class="nav justify-content-star main-nav">
+        <li class="nav-item px-2">
+          <a class="nav-link" href="{% url 'venue_list' %}">Venues</a>
+        </li>
+        <li class="nav-item px-2">
+          <a class="nav-link" href="{% url 'artist_list' %}">Artists</a>
+        </li>
+        <li class="nav-item px-2">
+          <a class="nav-link" href="{% url 'latest_notes' %}">Notes</a>
+        </li>
+      </ul>
+
+      <!-- dropdown -->
+      <!-- if session in browser/authenticated, means you're logged in, show logout link -->
+      {% if request.user.is_authenticated %}
+      <ul class="navbar-nav ms-auto justify-content-star">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="{% url 'user_profile' user_pk=user.pk %}"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Hi, {{user.username}}
+            <span class="avatar avatar-nav">
+              <img src="{{ request.user.profile.avatar.url }}" class="" />
+            </span>
+          </a>
+
+          <div
+            class="dropdown-menu dropdown-menu-end animate slideIn"
+            aria-labelledby="navbarDropdown"
+          >
+            <a
+              class="dropdown-item text-dark"
+              href="{% url 'user_profile' user_pk=user.pk %}"
+              >Profile</a
+            >
+            <div class="dropdown-divider"></div>
+            <a
+              class="nav-link login text-dark dropdown-item"
+              href="{% url 'logout' %}"
+              >Logout</a
+            >
+          </div>
+        </li>
+      </ul>
+
+      {% else %}
+        {% if  'logout' not in request.path %}
+        <ul class="navbar-nav ms-auto justify-content-star">
+          <li class="nav-item px-2">
+            <!-- from https://stackoverflow.com/questions/12877491/django-check-within-template-if-the-current-url-has-a-particular-word-in-it/12877568-->
+            <a class="nav-link login" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link logout btn btn-dark active"
+              aria-current="page"
+              href="{% url 'register' %}"
+              >Sign up</a
+            >
+          </li>
+        </ul>
+
+        {% else %}
+        <ul class="navbar-nav ms-auto justify-content-star">
+          <li class="nav-item px-2">
+            <a class="nav-link login" href="{% url 'login' %}?next={% url 'homepage' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link logout btn btn-dark active"
+              aria-current="page"
+              href="{% url 'register' %}"
+              >Sign up</a
+            >
+          </li>
+        </ul>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</nav>

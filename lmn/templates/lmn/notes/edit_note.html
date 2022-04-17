@@ -1,0 +1,41 @@
+{% extends 'lmn/base.html' %} {% block content %}
+<section class="pt-5">
+  <div class="container p-3">
+    <div class="col-sm-12 col-md-8 col-lg-10 pb-4">
+      <h2 class="notes-title">
+        <span class="text-light">Edit note for</span>
+        {{ note.show.artist.name }} <span class="text-light">at</span>
+        {{ note.show.venue.name }} on {{ note.show.show_date}}
+      </h2>
+    </div>
+    <div class="row input-box-venue d-grid gap-2 col-card">
+      <!--note detail  -->
+
+      <div class="col-sm-8 col-md-8 col-lg-10 pb-4">
+        <!-- Main content -->
+        <form
+          class="edit-note-form"
+          method="POST"
+          action="{% url 'edit_note' note_pk=note.pk %}"
+          enctype="multipart/form-data"
+        >
+          <div>{% csrf_token %} {{ form.as_p }}</div>
+          {% if messages %}
+          <div class="messages">
+            {% for message in messages %} {{ message }} {% endfor %}
+          </div>
+          {% endif %}
+          <input class="btn btn-success" type="submit" value="Update" />
+        </form>
+        <a
+          class="btn btn-dark btn-link"
+          href="{% url 'note_detail' note_pk=note.pk %}"
+          >Back to Note Detail</a
+        >
+      </div>
+    </div>
+    <!--end-row-->
+  </div>
+</section>
+
+{% endblock %}

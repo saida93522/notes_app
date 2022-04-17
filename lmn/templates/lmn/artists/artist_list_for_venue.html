@@ -1,0 +1,58 @@
+{% extends 'lmn/base.html' %} {% block content %}
+
+<section class="pt-5">
+  <div class="container p-3">
+    <h2 id="artists-at-venue-title" class="artist-title">
+      Shows at {{ venue.name }}
+    </h2>
+    <div class="row d-flex flex-column justify-content-start">
+      <!-- shows at -->
+      <!-- col2 -->
+      <div class="col-md-8 pt-3 gap-2">
+        <div class="pt-2 input-box-note">
+          {% for show in shows %}
+          <div class="show py-3 col-card d-grid gap-1" id="show-{{ show.pk }}">
+            <h4>{{ show.artist.name}}</h4>
+            <h5>on {{ show.show_date }}</h5>
+            {% if show.in_past %}
+            <span class="text-light fw-medium">
+              <!-- Click here to see or add notes for this show. -->
+            </span>
+            <div class="btn-show">
+              <p class="btn-show">
+                <a
+                  class="btn btn-dark btn-link"
+                  href="{% url 'notes_for_show' show_pk=show.pk %}"
+                  >See Notes for this Show</a
+                >
+              </p>
+              <p class="btn-show">
+                <a
+                  class="btn btn-dark btn-link"
+                  href="{% url 'new_note' show_pk=show.pk %}"
+                  >Add a Note</a
+                >
+              </p>
+            </div>
+
+            {% endif %}
+          </div>
+          {% empty %}
+          <p id="no-results">
+            Sorry, we have no records of shows for {{ venue.name }}.
+          </p>
+          {% endfor %}
+        </div>
+        <!--end of forloop-->
+      </div>
+      <!--col2-end-->
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+{% endblock %}

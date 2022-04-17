@@ -1,0 +1,31 @@
+db.sqlite3
+
+# python-related
+__pycache__
+*.pyc
+
+# ignore editor-specific files 
+.vscode
+.idea
+
+# ignore virtual enviroments 
+venv
+env
+
+# ignore media
+
+user_images
+profile_images
+
+# ignore cloud sql proxy
+cloud_sql_proxy.exe
+run_proxy.py
+
+# credentials
+settings_passwords.py
+lmn_credentials.json
+
+# gcloud files
+app.yaml
+cron.yaml
+www

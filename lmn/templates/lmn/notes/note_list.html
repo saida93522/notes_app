@@ -1,0 +1,132 @@
+{% extends 'lmn/base.html' %}
+{% block content %}
+
+<!-- Displays a list of notes. If a show object is present, display information about that
+show and include link to add a note for this show. -->
+
+<section class="pt-5">
+  <div class="container p-3">
+    <div class="notes-status col-sm-6 col-md-8">
+
+      {% if show %}
+        <h2 class="notes-title" id="show-title">
+          <span class="text-light">Notes for</span>
+          <a href="{% url 'artist_detail' artist_pk=show.artist.pk %}"
+            >{{ show.artist.name }}</a
+          >
+          <span class="text-light">at</span>
+          <br />
+          <a href="{% url 'venue_detail' venue_pk=show.venue.pk %}"
+            >{{ show.venue.name }}</a
+          >
+          <span class="text-light">on {{ show.show_date }}</span>
+        </h2>
+      {% else %}
+        <h2 class="notes-title">Latest Notes</h2>
+      {% endif %}
+      
+      {% if show %} {% if show.in_past %}
+        <a
+          class="btn-show"
+          id="add-new-show-link"
+          href="{% url 'new_note' show_pk=show.pk %}"
+        >
+          Add your own notes for this show.</a
+        >
+      {% else %}
+        <p>You can add a note once this show has started!</p>
+      {% endif %} {% endif %}
+      
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %} {{ message }} {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+
+    <div class="row d-flex flex-column justify-content-start">
+      <!-- past-show -->
+      <!-- col2 -->
+      <div class="col-sm-6 col-md-8 col-lg-12 pt-4 gap-2">
+        <div class="pt-2 input-box-note">
+
+          {% for note in notes %}
+            <div class="notes py-3 col-card d-grid gap-1" id="note_{{ note.pk }}">
+              <h3 class="text-light fw-medium">
+                <a href="{% url 'note_detail' note_pk=note.pk %}" class="note-title-link"
+                  >{{ note.title }}</a
+                >
+              </h3>
+              <p class="note-info">
+                <span class="text-light fw-medium">Posted on: </span>
+                {{ note.posted_date }}
+              </p>
+
+              <p class="note-info">
+                <span class="text-light fw-medium">By </span>
+                <a
+                  class="user"
+                  href="{% url 'user_profile' user_pk=note.user.pk %}"
+                  >{{ note.user.username }}</a
+                >
+              </p>
+              <p class="note-info">
+                <span class="text-light fw-medium">Show: </span>
+                {{note.show.artist.name }} at {{ note.show.venue.name }} on
+                <!--  -->
+
+                {{ note.show.show_date }}
+              </p>
+
+              <span class="text-light fw-medium">Opinion: </span>
+              <p class="note-text">{{ note.text|truncatechars:100 }}</p>
+              <span class="text-light fw-medium"
+                >Click here for more note details:
+              </span>
+              <a
+                class="btn-detail btn btn-dark btn-link"
+                href="{% url 'note_detail' note_pk=note.pk %}"
+              >
+                Details
+              </a>
+            </div>
+            <hr />
+          {% empty %}
+            <p>No one has created notes for this show yet.</p>
+            <hr />
+          {% endfor %}
+        </div>
+        <!--end of forloop-->
+      </div>
+      <!--col2-end-->
+    </div>
+  </div>
+</section>
+
+<!-- from https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html-->
+<!-- from https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html-->
+{% if notes.has_other_pages %}
+  <ul class="pagination">
+    {% if notes.has_previous %}
+      <li><a href="?page={{ notes.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in notes.paginator.page_range %}
+      {% if notes.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if notes.has_next %}
+      <li><a href="?page={{ notes.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'lmn/base.html' %} 
+{% block content %}
+
+<!-- A user's profile page.
+
+Includes list of user's notes with title and preview of text.
+Text truncated to 300 characters. 
+
+user_profile is the user that this profile is about 
+user is a variable provided to the template and is the current logged-in user 
+
+-->
+
+<section>
+  <div class="container">
+
+    <div class="messages">
+      {% if messages %}
+        {% for message in messages %}
+          <p class="messages-error">{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- User Profile -->
+
+{% if user.is_authenticated %}
+    {% if request.user.id == user_profile.id %}
+    <!-- Show edit profile button -->
+      <a class="btn btn-dark mb-5" href="{% url 'my_user_profile' %}">Edit profile</a>
+      <h2 class="pb-4">My profile</h2>
+    {% else %}
+      <h2 class="pb-4">{{ user_profile.username }}'s profile</h2>
+    {% endif %}
+{% else %}
+  <h2 class="pb-4">{{ user_profile.username }}'s profile</h2>
+{% endif %}
+
+<!-- Favorite Artist -->
+<h3 id="username-artist pt-2">Favorite Artist</h3>
+
+{% if user_profile.profile.favorite_artist %}
+  <div class="artist">
+    <p>{{user_profile.profile.favorite_artist.name}}</p>
+  </div>
+{% else %}
+  <p id="no-records">No favorite artist.</p>
+{% endif %}
+
+<!-- Favorite Venue -->
+<h3 id="username-artist pt-2">Favorite Venue</h3>
+{% if user_profile.profile.favorite_venue %}
+  <div class="venue">
+    {% if user_profile.profile.favorite_venue.city == 'Unknown' %}
+      <p>{{user_profile.profile.favorite_venue.name}} in {{user.profile.favorite_venue.state}}</p>
+    {% else %}
+      <p>{{user_profile.profile.favorite_venue.name}} in {{user_profile.profile.favorite_venue.city}}, {{user_profile.profile.favorite_venue.state}}</p>
+    {% endif %}
+  </div>
+{% else %}
+  <p id="no-records">No favorite venue.</p>
+{% endif %}
+
+<hr />
+
+<!-- Notes -->
+{% if user.is_authenticated %}
+    {% if request.user.id == user_profile.id %}
+      <h2 id="username-notes">My notes</h2>
+    {% else %}
+      <h2 id="username-notes">{{ user_profile.username }}'s notes</h2>
+    {% endif %} 
+{% else %}
+  <h2 id="username-notes">{{ user_profile.username }}'s notes</h2>
+{% endif %} 
+
+{% for note in notes %}
+
+    <div class="show note col-card d-grid gap-1 " id="note-{{ note.pk }}">
+      <h3 class="note-title">
+        <a href="{% url 'note_detail' note_pk=note.pk %}" class="note-title-link">{{ note.title }}</a>
+      </h3>
+
+      <p class="note-info">
+        <a href="{% url 'notes_for_show' show_pk=note.show.pk %}">
+          {{ note.show.artist.name }} at {{ note.show.venue.name }} on
+          {{note.show.show_date }}
+        </a>
+      </p>
+      <p class="note-text">{{ note.text|truncatechars:300 }}</p>
+      <p class="note-posted-at">{{ note.posted_date }}</p>
+      <span class="text-light fw-medium"
+      >Click here for more note details:
+    </span>
+    <a
+      class="btn-detail btn btn-dark btn-link"
+      href="{% url 'note_detail' note_pk=note.pk %}"
+    >
+      Details
+    </a>
+    </div>
+
+    {% empty %}
+
+    <p id="no-records">No notes.</p>
+{% endfor %}
+</section>
+
+{% endblock %}

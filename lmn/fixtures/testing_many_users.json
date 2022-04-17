@@ -1,0 +1,120 @@
+[
+    {"model": "auth.user", "pk": 1 , "fields":
+      { "username": "alice",
+        "first_name": "alice",
+        "last_name": "last",
+        "email": "a@a.com",
+        "password": "qwertyuiop"
+      }
+    },
+
+    {"model": "auth.user", "pk": 2 , "fields":
+      { "username": "bob",
+        "first_name": "bob",
+        "last_name": "last",
+        "email": "b@b.com",
+        "password": "qwertyuiop"
+      }
+    },
+
+    {"model": "auth.user", "pk": 3 , "fields":
+      { "username": "me",
+        "first_name": "me",
+        "last_name": "mine",
+        "email": "email@mine.com",
+        "password": "qwertyuiop"
+      }
+    },
+    
+        {"model": "auth.user", "pk": 4 , "fields":
+          { "username": "cat",
+            "first_name": "cat",
+            "last_name": "last",
+            "email": "cat@cat.com",
+            "password": "qwertyuiop"
+          }
+        },
+    
+        {"model": "auth.user", "pk": 5 , "fields":
+          { "username": "dog",
+            "first_name": "dog",
+            "last_name": "last",
+            "email": "dog@dog.com",
+            "password": "qwertyuiop"
+          }
+        },
+    
+        {"model": "auth.user", "pk": 6 , "fields":
+          { "username": "chicken",
+            "first_name": "chicken",
+            "last_name": "mine",
+            "email": "chicken@chicken.com",
+            "password": "qwertyuiop"
+          }
+        },
+        
+            {"model": "auth.user", "pk": 7 , "fields":
+              { "username": "rabbit",
+                "first_name": "rabbit",
+                "last_name": "last",
+                "email": "rabbit@a.com",
+                "password": "qwertyuiop"
+              }
+            },
+        
+            {"model": "auth.user", "pk": 8 , "fields":
+              { "username": "cow",
+                "first_name": "cow",
+                "last_name": "last",
+                "email": "cow@b.com",
+                "password": "qwertyuiop"
+              }
+            },
+        
+            {"model": "auth.user", "pk": 9 , "fields":
+              { "username": "cheetah",
+                "first_name": "cheetah",
+                "last_name": "mine",
+                "email": "cheetah@mine.com",
+                "password": "qwertyuiop"
+              }
+            },
+            
+                {"model": "auth.user", "pk": 10 , "fields":
+                  { "username": "fox",
+                    "first_name": "fox",
+                    "last_name": "last",
+                    "email": "fox@a.com",
+                    "password": "qwertyuiop"
+                  }
+                },
+            
+                {"model": "auth.user", "pk": 11 , "fields":
+                  { "username": "wolf",
+                    "first_name": "wolf",
+                    "last_name": "last",
+                    "email": "wolf@b.com",
+                    "password": "qwertyuiop"
+                  }
+                },
+            
+                {"model": "auth.user", "pk": 12 , "fields":
+                  { "username": "bird",
+                    "first_name": "bird",
+                    "last_name": "mine",
+                    "email": "bird@mine.com",
+                    "password": "qwertyuiop"
+                  }
+                }
+                        
+        
+        
+    ]
+    
+
+
+
+
+
+
+

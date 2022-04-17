@@ -1,0 +1,41 @@
+
+parsed_data = [
+    {'month': 'Dec', 'day': '1', 'year': '2021', 'venue_name': 'The Fitzgerald Theater', 'artist_name': 'City and Colour', 'venue_state': 'Minnesota'}, 
+    {'month': 'Dec', 'day': '1', 'year': '2021', 'venue_name': 'Turf Club', 'artist_name': 'Ben Noble', 'venue_state': 'Minnesota'}, 
+    {'month': 'Dec', 'day': '1', 'year': '2021', 'venue_name': '7th St Entry', 'artist_name': 'Sunset', 'venue_state': 'Minnesota'}, 
+    {'month': 'Nov', 'day': '30', 'year': '2021', 'venue_name': 'Turf Club', 'artist_name': 'Preoccupations and METZ', 'venue_state': 'Minnesota'}, 
+    {'month': 'Nov', 'day': '30', 'year': '2021', 'venue_name': 'Fine Line', 'artist_name': 'The Aces', 'venue_state': 'Minnesota'}, 
+    {'month': 'Nov', 'day': '29', 'year': '2021', 'venue_name': '7th St Entry', 'artist_name': 'glass beach', 'venue_state': 'Minnesota'}, 
+    {'month': 'Nov', 'day': '28', 'year': '2021', 'venue_name': 'Turf Club', 'artist_name': 'Monophonics', 'venue_state': 'Minnesota'}, 
+    {'month': 'Nov', 'day': '28', 'year': '2021', 'venue_name': 'First Avenue', 'artist_name': 'Beach Bunny', 'venue_state': 'Minnesota'}, 
+    {'month': 'Nov', 'day': '28', 'year': '2021', 'venue_name': '7th St Entry', 'artist_name': 'Frozen Soul and Sanguisugabogg', 'venue_state': 'Minnesota'}, 
+    {'month': 'Nov', 'day': '27', 'year': '2021', 'venue_name': 'First Avenue', 'artist_name': 'The Cactus Blossoms', 'venue_state': 'Minnesota'}
+]
+
+
+parsed_data_with_venue_city = [
+    {'month': 'Dec', 'day': '1', 'year': '2021', 'venue_name': 'The Fitzgerald Theater', 'artist_name': 'City and Colour', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul'}, 
+    {'month': 'Dec', 'day': '1', 'year': '2021', 'venue_name': 'Turf Club', 'artist_name': 'Ben Noble', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul'}, 
+    {'month': 'Dec', 'day': '1', 'year': '2021', 'venue_name': '7th St Entry', 'artist_name': 'Sunset', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul'}, 
+    {'month': 'Nov', 'day': '30', 'year': '2021', 'venue_name': 'Turf Club', 'artist_name': 'Preoccupations and METZ', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul'}, 
+    {'month': 'Nov', 'day': '30', 'year': '2021', 'venue_name': 'Fine Line', 'artist_name': 'The Aces', 'venue_state': 'Minnesota', 'venue_city': 'Minneapolis'}, 
+    {'month': 'Nov', 'day': '29', 'year': '2021', 'venue_name': '7th St Entry', 'artist_name': 'glass beach', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul'}, 
+    {'month': 'Nov', 'day': '28', 'year': '2021', 'venue_name': 'Turf Club', 'artist_name': 'Monophonics', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul'}, 
+    {'month': 'Nov', 'day': '28', 'year': '2021', 'venue_name': 'First Avenue', 'artist_name': 'Beach Bunny', 'venue_state': 'Minnesota', 'venue_city': 'Minneapolis'}, 
+    {'month': 'Nov', 'day': '28', 'year': '2021', 'venue_name': '7th St Entry', 'artist_name': 'Frozen Soul and Sanguisugabogg', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul'}, 
+    {'month': 'Nov', 'day': '27', 'year': '2021', 'venue_name': 'First Avenue', 'artist_name': 'The Cactus Blossoms', 'venue_state': 'Minnesota', 'venue_city': 'Minneapolis'}
+]
+
+
+parsed_data_with_venue_city_and_datetime = [
+    {'venue_name': 'The Fitzgerald Theater', 'artist_name': 'City and Colour', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul', 'datetime': datetime.datetime(2021, 12, 1, 0, 0)}, 
+    {'venue_name': 'Turf Club', 'artist_name': 'Ben Noble', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul', 'datetime': datetime.datetime(2021, 12, 1, 0, 0)}, 
+    {'venue_name': '7th St Entry', 'artist_name': 'Sunset', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul', 'datetime': datetime.datetime(2021, 12, 1, 0, 0)}, 
+    {'venue_name': 'Turf Club', 'artist_name': 'Preoccupations and METZ', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul', 'datetime': datetime.datetime(2021, 11, 30, 0, 0)}, 
+    {'venue_name': 'Fine Line', 'artist_name': 'The Aces', 'venue_state': 'Minnesota', 'venue_city': 'Minneapolis', 'datetime': datetime.datetime(2021, 11, 30, 0, 0)}, 
+    {'venue_name': '7th St Entry', 'artist_name': 'glass beach', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul', 'datetime': datetime.datetime(2021, 11, 29, 0, 0)}, 
+    {'venue_name': 'Turf Club', 'artist_name': 'Monophonics', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul', 'datetime': datetime.datetime(2021, 11, 28, 0, 0)}, 
+    {'venue_name': 'First Avenue', 'artist_name': 'Beach Bunny', 'venue_state': 'Minnesota', 'venue_city': 'Minneapolis', 'datetime': datetime.datetime(2021, 11, 28, 0, 0)}, 
+    {'venue_name': '7th St Entry', 'artist_name': 'Frozen Soul and Sanguisugabogg', 'venue_state': 'Minnesota', 'venue_city': 'St. Paul', 'datetime': datetime.datetime(2021, 11, 28, 0, 0)}, 
+    {'venue_name': 'First Avenue', 'artist_name': 'The Cactus Blossoms', 'venue_state': 'Minnesota', 'venue_city': 'Minneapolis', 'datetime': datetime.datetime(2021, 11, 27, 0, 0)}
+]

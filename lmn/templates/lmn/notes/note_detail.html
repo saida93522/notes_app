@@ -1,0 +1,115 @@
+{% extends 'lmn/base.html' %} {% load static %} {% block content %}
+<section class="pt-5">
+    <div class="container p-3">
+        <div>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </div>
+        <!-- not-detail page heading -->
+        <div class="col-sm-12 col-md-8 col-lg-10 pb-4">
+            <h2 id="note-page-title">
+                <a href="{% url 'user_profile' user_pk=note.user.pk %}">
+                    {{ note.user.username }}
+                </a>created this note for 
+                <a href="{% url 'notes_for_show' show_pk=note.show.pk %}">
+                    {{ note.show.artist.name }} at {{ note.show.venue.name }}</a> on {{ note.posted_date }}
+            </h2>
+        </div>
+        <div class="row d-flex flex-column justify-content-start input-box-venue col-card">
+                <!--note detail  -->
+
+                <!-- profile img -->
+                <div class="container__media d-block">
+                    <img class="profile-pic" src="{{ note.user.profile.avatar.url }}"/>
+                </div>
+                <div class="col-md-8 note-container note-detail">
+                <!-- Main content -->
+                    <div class="container__content pt-4 ">
+                        <h3 class="note-heading">Title:
+                        <p class="fs-6" id="note-title"><b>{{ note.title}}</b></p></h3>
+
+                        <h3>Note Detail:
+                        <p class="fs-6" id="note-text">{{ note.text }}</b></h3>
+                    </div>
+                </div>
+
+                <!-- note-photo -->
+                <div class="card-photo col-md-8  ">
+                    <!-- card-photo -->
+                    <h5 id="note-pic">Photo</h5>
+                    {% if note.photo %}
+                    <img src="{{note.photo.url}}" width="250">
+                    {% else %}
+                    <p>No photo uploaded.</p>
+                    {% endif %}
+                </div>
+        
+
+    <!-- Social-media Icons -->
+    <!-- creates the twitter share button of note detail page which links to twitter and tweets artist, venue, and note title-->
+    <div class="social d-flex flex-row align-items-center py-4">
+        <div class="twitter ">
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Saw {{ note.show.artist.name }} at {{ note.show.venue.name }} check out review {{ note.title }} at"  data-hashtags="LMN" data-show-count="false">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+            <!-- this is the javascript needed by twitter button-->
+            <script>
+            window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+            return t;
+            }(document, "script", "twitter-wjs"));
+            </script>
+        </div> 
+            <div class="facebook">
+                <div class="fb-share-button pt-5" 
+                data-href="https://lmn-ejjns.uc.r.appspot.com/notes/detail/{{note.pk}}"  
+                data-layout="button_count">
+                </div>
+
+                <div id="fb-root">
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                </div>
+            </div>
+    </div> <!--end-row-->
+
+            {% if note.user == user %}
+            <div class="note-btn mt-5">
+                <form class="ml-4" action="{% url 'delete_note' note.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger delete pr-4 fw-medium">Delete</button>
+                </form>
+                
+                <form action="{% url 'edit_note' note.pk %}" method="GET">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-info edit mx-4 fw-medium">Edit</button>
+                </form>
+                <script src="{% static 'js/confirm_delete.js' %}"></script>
+            </div>
+            {% endif %}
+
+
+
+        
+    </div>
+</section>
+<!-- note-card -->
+
+
+{% endblock %}

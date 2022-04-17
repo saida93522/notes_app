@@ -1,0 +1,95 @@
+{% extends 'lmn/base.html' %}
+{% block content %}
+
+<section class="pt-5">
+  <div class="container p-3">
+    <h2 class="artist-title">Artist List</h2>
+    <div class="row d-flex flex-column justify-content-start">
+      <div class="col-md-6">
+        <p class="py-4">
+          To browse shows by artist, select an artist from the list below.
+        </p>
+      </div>
+
+      <!-- col2 -->
+      <div class="col-sm-12 col-md-8 col-lg-10 d-grid gap-2 pb-4">
+        <div class="input-box-artist col-card">
+          <p>Search Artist</p>
+          <form class="artist-form" action="{% url 'artist_list' %}">
+            {{ form }}
+            <span id="search">
+              <input
+                id="search-input"
+                type="submit"
+                value="Search"
+                placeholder="Search..."
+              />
+            </span>
+          </form>
+        </div>
+      </div>
+
+      <!-- col3 -->
+      <div class="col-sm-8 pt-4 col-md-8 col-lg-10 d-grid gap-2">
+        <div class="artist-condition">
+          {% if search_term %}
+          <h5 id="artist-list-title">
+            Artists matching '{{ search_term }}'
+            <a href="{% url 'artist_list' %}" id="clear_search">(clear)</a>
+          </h5>
+          {% else %}
+          <h2 id="artist-list-title">All artists</h2>
+          {% endif %}
+        </div>
+
+        <div class="pt-2 input-box-venue">
+          {% for artist in artists %}
+          <div
+            class="artist py-4 col-card d-grid gap-1"
+            id="artist_{{ artist.pk }} "
+          >
+            <h3 class="artist-name pl-4">
+              <a href="{% url 'venues_for_artist' artist_pk=artist.pk %}" class="artist-venue-title">{{ artist.name }}</a>
+              <span class="artist-venue-span btn-show">
+                <a href="{% url 'venues_for_artist' artist_pk=artist.pk %}" class="artist-venue-btn btn btn-dark btn-link">See Shows</a>
+                <a href="{% url 'artist_detail' artist_pk=artist.pk %}" class="artist-venue-btn btn btn-dark btn-link">Artist Details</a>
+              </span>
+            </h3>
+          </div>
+          <hr />
+          {% empty %}
+
+          <p>No artists found</p>
+          <hr />
+          {% endfor %}
+        </div>
+        <!--end of forloop-->
+        <!-- from https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html-->
+        {% if artists.has_other_pages %}
+        <ul class="pagination">
+          {% if artists.has_previous %}
+            <li><a href="?page={{ artists.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+          {% endif %}
+          {% for i in artists.paginator.page_range %}
+            {% if artists.number == i %}
+              <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+              <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if artists.has_next %}
+            <li><a href="?page={{ artists.next_page_number }}">&raquo;</a></li>
+          {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+          {% endif %}
+        </ul>
+        {% endif %}
+      </div>
+      <!--col2-end-->
+    </div>
+  </div>
+
+
+{% endblock %}

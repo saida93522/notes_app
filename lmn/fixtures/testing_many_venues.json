@@ -1,0 +1,82 @@
+[
+    {"model": "lmn.venue", "pk": 1 , "fields":
+      { "name": "First Avenue",
+        "city": "Minneapolis",
+        "state": "MN"
+      }
+    },
+    {"model": "lmn.venue", "pk": 2 , "fields":
+      { "name": "The Turf Club",
+        "city": "St. Paul",
+        "state": "MN"
+      }
+    },
+    {"model": "lmn.venue", "pk": 3 , "fields":
+      { "name": "Target Center",
+        "city": "Minneapolis",
+        "state": "MN"
+      }
+    },
+    
+    {"model": "lmn.venue", "pk": 4 , "fields":
+        { "name": "red sea",
+          "city": "Minneapolis",
+          "state": "MN"
+        }
+      },
+      {"model": "lmn.venue", "pk": 5 , "fields":
+        { "name": "the myth",
+          "city": "St. Paul",
+          "state": "MN"
+        }
+      },
+      {"model": "lmn.venue", "pk": 6 , "fields":
+        { "name": "part wolf",
+          "city": "Minneapolis",
+          "state": "MN"
+        }
+      },
+      {"model": "lmn.venue", "pk": 7 , "fields":
+        { "name": "groud zero",
+          "city": "Minneapolis",
+          "state": "MN"
+        }
+      },
+      {"model": "lmn.venue", "pk": 8 , "fields":
+        { "name": "Excel energy center",
+          "city": "St. Paul",
+          "state": "MN"
+        }
+      },
+      {"model": "lmn.venue", "pk": 9 , "fields":
+        { "name": "skyway theatre",
+          "city": "Minneapolis",
+          "state": "MN"
+        }
+      },
+      
+    {"model": "lmn.venue", "pk": 10 , "fields":
+        { "name": "the amsterdam",
+          "city": "Minneapolis",
+          "state": "MN"
+        }
+      },
+      {"model": "lmn.venue", "pk": 11 , "fields":
+        { "name": "the vfw",
+          "city": "St. Paul",
+          "state": "MN"
+        }
+      },
+      {"model": "lmn.venue", "pk": 12 , "fields":
+        { "name": "varsity theatre",
+          "city": "Minneapolis",
+          "state": "MN"
+        }
+      }
+
+
+
+
+
+  ]
+  
